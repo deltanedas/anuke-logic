@@ -1,0 +1,15 @@
+{
+	"type": "LogicDisplay",
+	"category": "logic",
+	"requirements": [
+		"silicon/300",
+		"titanium/200",
+		"metaglass/150",
+		"surge-alloy/50"
+	],
+
+	"health": 2400,
+	"size": 7,
+	"displaySize": 200,
+	"maxSides": 64
+}

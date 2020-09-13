@@ -1,0 +1,13 @@
+{
+	"type": "MemoryBlock",
+	"category": "logic",
+	"requirements": [
+		"silicon/70",
+		"titanium/30",
+		"phase-fabric/5"
+	],
+
+	"health": 240,
+	"size": 2,
+	"memoryCapacity": 512
+}
