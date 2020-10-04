@@ -1,3 +1,6 @@
+// All result strings are truncated to this length
+const maxLength = 256;
+
 const ops = {
 	len: {
 		run: string => string.length
@@ -86,6 +89,10 @@ const StringI = {
 	},
 
 	setResult(str) {
+		if (typeof(str) == "string") && str.length > maxLength) {
+			str = str.substr(0, maxLength);
+		}
+
 		this.vm["set" + ((typeof(str) == "number") ? "num" : "obj")](this.residx, str);
 	}
 };
