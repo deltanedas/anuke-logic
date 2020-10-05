@@ -173,7 +173,7 @@ const StringStatement = {
 		b.append(this.string + "");
 
 		for (var i of this.args) {
-			if (i != "undefined") {
+			if (i !== undefined && i != "undefined") {
 				b.append(" " + i);
 			}
 		}
