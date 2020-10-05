@@ -89,7 +89,7 @@ const StringI = {
 	},
 
 	setResult(str) {
-		if (typeof(str) == "string") && str.length > maxLength) {
+		if (typeof(str) == "string" && str.length > maxLength) {
 			str = str.substr(0, maxLength);
 		}
 
