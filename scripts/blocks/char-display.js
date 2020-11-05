@@ -11,12 +11,12 @@ const side = (64 - 28) / 4;
 disp.buildType = () => extend(Building, {
 	draw() {
 		this.super$draw();
-		// add power chdck if anuke does
+		// add power check if anuke does
 		if (/*this.power.status < 0.01 ||*/ disp.invisible(this.char)) return;
 
 		const ratio = this.region.width / this.region.height;
 //		Draw.alpha(this.power.status)
-		Draw.rect(this.region, this.x, this.y, side * ratio, side);
+		Draw.rect(this.region, this.x, this.y, Math.max(side, side * ratio), side);
 //		Draw.reset();
 	},
 
@@ -38,7 +38,9 @@ disp.buildType = () => extend(Building, {
 	},
 
 	senseObject(type) {
-		if (type == LAccess.config) return this.char;
+		if (type == LAccess.config) {
+			return this.char.charCodeAt(0);
+		}
 		return this.super$senseObject(type);
 	},
 
@@ -65,7 +67,7 @@ disp.buildType = () => extend(Building, {
 	},
 	write(write) {
 		this.super$write(write);
-		write.i(this.char.charCodeAt(0));
+		write.i(this.char);
 	},
 
 	region: null,
