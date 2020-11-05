@@ -1,0 +1,18 @@
+{
+	"size": 2,
+	"category": "logic",
+	"research": "logic-display",
+	"requirements": [
+		"silicon/30",
+		"titanium/20",
+		"metaglass/15"
+	],
+
+	"consumes": {
+		"power": 0.25
+	},
+
+	"enableDrawStatus": false,
+	"destructible": true,
+	"solid": true
+}

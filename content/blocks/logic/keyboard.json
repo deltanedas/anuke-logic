@@ -1,0 +1,10 @@
+{
+	"size": 1,
+	"category": "logic",
+	"research": "message",
+	"requirements": [
+		"silicon/20",
+		"graphite/20",
+		"titanium/10"
+	]
+}

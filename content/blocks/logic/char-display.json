@@ -1,0 +1,20 @@
+{
+	"size": 2,
+	"category": "logic",
+	"research": "7seg-display",
+	"requirements": [
+		"silicon/80",
+		"titanium/80",
+		"metaglass/40",
+		"phase-fabric/20"
+	],
+
+	"consumes": {
+		"power": 0.5
+	},
+
+	"logicConfigurable": true,
+	"enableDrawStatus": false,
+	"destructible": true,
+	"solid": true
+}
