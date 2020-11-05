@@ -8,9 +8,8 @@
 		"metaglass/15"
 	],
 
-	"consumes": {
-		"power": 0.25
-	},
+// This is pretty h
+//	"consumes": {"power": 0.25},
 
 	"enableDrawStatus": false,
 	"destructible": true,

@@ -2,7 +2,7 @@ const disp = extendContent(Block, "char-display", {
 	invisible: c => c == ' ' || c == '\n' || c == '\r'
 });
 
-disp.config(java.lang.Character, (build, char) => {
+disp.config(java.lang.String, (build, char) => {
 	build.drawx(true, char);
 });
 
@@ -11,12 +11,13 @@ const side = (64 - 28) / 4;
 disp.buildType = () => extend(Building, {
 	draw() {
 		this.super$draw();
-		if (this.power.status < 0.01 || disp.invisible(this.char)) return;
+		// add power chdck if anuke does
+		if (/*this.power.status < 0.01 ||*/ disp.invisible(this.char)) return;
 
-		const ratio = this.region.height / this.region.width;
-		Draw.alpha(this.power.status)
-		Draw.rect(this.region, this.x, this.y, side / ratio, side);
-		Draw.reset();
+		const ratio = this.region.width / this.region.height;
+//		Draw.alpha(this.power.status)
+		Draw.rect(this.region, this.x, this.y, side * ratio, side);
+//		Draw.reset();
 	},
 
 	created() {
@@ -28,19 +29,29 @@ disp.buildType = () => extend(Building, {
 		const glyph = Fonts.def.data.getGlyph(this.char);
 		if (!glyph) {
 			this.char = '?';
-			return this.rechache();
+			return this.recache();
 		}
 
-		// TODO: properly get glyph page
+		// TODO: properly get glyph page, this is a hack
 		this.region = new TextureRegion(Fonts.def.region.texture,
 			glyph.u, glyph.v2, glyph.u2, glyph.v);
+	},
+
+	senseObject(type) {
+		if (type == LAccess.config) return this.char;
+		return this.super$senseObject(type);
 	},
 
 	config() {
 		return this.char;
 	},
 	drawx(char, value) {
-		char = char ? value.substr(0, 1) : new java.lang.Character(value);
+		try {
+			char = char ? value.substr(0, 1) : new java.lang.Character(value);
+		} catch (e) {
+			char = " ";
+		}
+
 		if (char != this.char) {
 			this.char = char;
 			this.recache();

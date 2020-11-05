@@ -9,9 +9,8 @@
 		"phase-fabric/20"
 	],
 
-	"consumes": {
-		"power": 0.5
-	},
+// this is pretty h
+//	"consumes": {"power": 0.5},
 
 	"logicConfigurable": true,
 	"enableDrawStatus": false,

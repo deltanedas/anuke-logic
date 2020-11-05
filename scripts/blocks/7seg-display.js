@@ -60,15 +60,16 @@ disp.config(java.lang.Integer, (build, bits) => {
 disp.buildType = () => extend(Building, {
 	draw() {
 		this.super$draw();
-		if (!this.bits || this.power.status < 0.01) return;
+		// add power check if anuke does
+		if (!this.bits /*|| this.power.status < 0.01*/) return;
 
-		Draw.alpha(this.power.status);
+//		Draw.alpha(this.power.status);
 		for (var i in disp.segments) {
 			if ((this.bits & (1 << i)) != 0) {
 				Draw.rect(disp.segments[i], this.x, this.y);
 			}
 		}
-		Draw.reset();
+//		Draw.reset();
 	},
 
 	drawx(char, value) {
