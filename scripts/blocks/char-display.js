@@ -6,7 +6,7 @@ disp.config(java.lang.String, (build, char) => {
 	build.drawx(true, char);
 });
 
-const side = (64 - 28) / 4;
+const side = (64 - 28) / 6 / 16;
 
 disp.buildType = () => extend(Building, {
 	draw() {
@@ -14,9 +14,10 @@ disp.buildType = () => extend(Building, {
 		// add power check if anuke does
 		if (/*this.power.status < 0.01 ||*/ disp.invisible(this.char)) return;
 
-		const ratio = this.region.width / this.region.height;
-//		Draw.alpha(this.power.status)
-		Draw.rect(this.region, this.x, this.y, Math.min(side, side * ratio), side);
+		const x = this.region.width * side;
+		const y = this.region.height * side;
+//		Draw.alpha(this.power.status);
+		Draw.rect(this.region, this.x, this.y, x, y);
 //		Draw.reset();
 	},
 
