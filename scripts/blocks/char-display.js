@@ -45,7 +45,7 @@ disp.buildType = () => extend(Building, {
 	},
 
 	config() {
-		return this.char;
+		return new java.lang.String(this.char);
 	},
 	drawx(char, value) {
 		try {
@@ -62,12 +62,12 @@ disp.buildType = () => extend(Building, {
 
 	read(read, version) {
 		this.super$read(read, version);
-		this.drawx(false, read.i());
+		this.drawx(true, read.str());
 		this.recache();
 	},
 	write(write) {
 		this.super$write(write);
-		write.i(this.char);
+		write.str(this.char);
 	},
 
 	region: null,
