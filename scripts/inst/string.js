@@ -47,6 +47,11 @@ const ops = {
 		args: {char: "num"},
 
 		run(string, args) {
+			// If pushing DEL, pop a char
+			if (args.char == 0x7f) {
+				return string.slice(0, -1);
+			}
+
 			try {
 				return string + java.lang.Character(args.char);
 			} catch (e) {
