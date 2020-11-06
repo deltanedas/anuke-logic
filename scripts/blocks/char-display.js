@@ -16,7 +16,7 @@ disp.buildType = () => extend(Building, {
 
 		const ratio = this.region.width / this.region.height;
 //		Draw.alpha(this.power.status)
-		Draw.rect(this.region, this.x, this.y, Math.max(side, side * ratio), side);
+		Draw.rect(this.region, this.x, this.y, Math.min(side, side * ratio), side);
 //		Draw.reset();
 	},
 
