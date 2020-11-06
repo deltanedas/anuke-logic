@@ -18,4 +18,4 @@ const add = (type, names) => {
 add("inst", ["string", "drawx", "reflect"]);
 
 /* Blocks */
-add("blocks", ["7seg-display", "char-display", "keyboard"]);
+add("blocks", ["7seg-display", "char-display", "keyboard", "unit-detector"]);

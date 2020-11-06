@@ -1,0 +1,16 @@
+{
+	"size": 3,
+	"category": "logic",
+	"research": "illuminator",
+	"requirements": [
+		"silicon/120",
+		"lead/80",
+		"graphite/50",
+		"metaglass/25"
+	],
+
+	"enableDrawStatus": false,
+	"destructible": true,
+	"configurable": true,
+	"hasShadow": false
+}
