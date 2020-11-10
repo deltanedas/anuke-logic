@@ -93,3 +93,5 @@ LogicIO.allStatements.add(prov(() => DrawxStatement.new([
 	"display1",
 	'"h"'
 ])));
+
+module.exports = DrawxStatement;

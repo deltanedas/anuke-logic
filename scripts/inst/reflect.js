@@ -121,3 +121,5 @@ LogicIO.allStatements.add(prov(() => ReflectStatement.new([
 	'"var_name"',
 	"value"
 ])));
+
+module.exports = ReflectStatement;

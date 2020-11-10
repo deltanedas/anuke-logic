@@ -74,3 +74,5 @@ disp.buildType = () => extend(Building, {
 	region: null,
 	char: 'h'
 });
+
+module.exports = disp;

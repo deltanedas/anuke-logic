@@ -91,3 +91,5 @@ disp.buildType = () => extend(Building, {
 
 	bits: 0
 });
+
+module.exports = disp;

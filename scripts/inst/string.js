@@ -203,3 +203,5 @@ LogicIO.allStatements.add(prov(() => StringStatement.new([
 	'"frog"',
 	'" cat"'
 ])));
+
+module.exports = StringStatement;

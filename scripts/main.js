@@ -19,3 +19,6 @@ add("inst", ["string", "drawx", "reflect"]);
 
 /* Blocks */
 add("blocks", ["7seg-display", "char-display", "keyboard", "unit-detector"]);
+
+/* Units */
+add("units", ["messenger"]);

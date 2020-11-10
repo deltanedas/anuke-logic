@@ -13,3 +13,5 @@ keyb.buildType = () => extendContent(MessageBlock.MessageBuild, keyb, {
 	// no
 	handleString() {}
 });
+
+module.exports = keyb;
