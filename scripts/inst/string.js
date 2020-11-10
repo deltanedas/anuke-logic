@@ -190,7 +190,7 @@ const StringStatement = {
 	},
 
 	name: () => "String",
-	category: () => LCategory.operations
+	color: () => Pal.logicOperations
 };
 
 /* Mimic @RegisterStatement */

@@ -109,7 +109,7 @@ const ReflectStatement = {
 	},
 
 	name: () => "Reflect",
-	category: () => LCategory.io
+	color: () => Pal.logicIo
 };
 
 /* Mimic @RegisterStatement */
