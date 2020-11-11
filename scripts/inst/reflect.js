@@ -1,5 +1,5 @@
 // "reflect" instruction provides the means to get/set variables from a string
-// Completely removes the need for memory, requires T3+ processor.
+// Completely removes the need for memory; requires T3+ processor.
 
 // reflect get var "myvar" == set var myvar
 // reflect set "myvar" var == set myvar var
@@ -44,19 +44,8 @@ const ReflectI = {
 			return vars.get(str).id;
 		}
 
-		// Add the new variable to the map
-		const index = vm.vars.length;
-		vars.put(str, new LAssembler.BVar(index));
-
-		// Add it to the executor's variables array
-		const newVars = [];
-		for (var i = 0; i < index; i++) {
-			newVars[i] = vm.vars[i];
-		}
-		newVars[index] = new LExecutor.Var(str);
-
-		vm.vars = newVars;
-		return index;
+		// Don't add new variables, require declaring them first
+		return -1;
 	}
 };
 
