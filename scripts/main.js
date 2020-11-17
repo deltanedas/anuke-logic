@@ -15,7 +15,7 @@ const add = (type, names) => {
 
 
 /* Instructions */
-add("inst", ["string", "drawx", "reflect"]);
+add("inst", ["string", "drawx", "reflect", "unbind"]);
 
 /* Blocks */
 add("blocks", ["7seg-display", "char-display", "keyboard", "unit-detector"]);
