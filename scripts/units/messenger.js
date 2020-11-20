@@ -62,7 +62,9 @@ Blocks.airFactory.plans.add(new UnitFactory.UnitPlan(mess, 25 * 60,
 	ItemStack.with(Items.silicon, 30, Items.titanium, 20)));
 
 // Disable AI
-mess.defaultController = () => new LogicAI();
+mess.defaultController = () => extend(AIController, {
+	updateUnit() {}
+});
 mess.speed = 1.87;
 mess.drag = 0.01;
 mess.health = 170;
