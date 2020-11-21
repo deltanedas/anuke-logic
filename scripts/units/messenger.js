@@ -55,7 +55,9 @@ const mess = extendContent(UnitType, "messenger", {
 	},
 
 	// Create super$ funcs that can be used, on its own theyre booleans
-	drawCell() {}, drawItems() {}
+	drawCell() {}, drawItems() {},
+
+	classId: -1
 });
 
 Blocks.airFactory.plans.add(new UnitFactory.UnitPlan(mess, 25 * 60,
@@ -99,11 +101,23 @@ mess.constructor = () => extend(UnitEntity, {
 		this.vel.setZero();
 	},
 
+	// Fix reading from net or saves
+	classId: () => mess.classId,
+
 	// Translated from zenith mass
 	mass: () => 502,
 
 	warp() {
 		return Mathf.clamp(this.vel.len(), 1, (this.power + 1) * 5);
+	},
+
+	read(read) {
+		this.super$read(read);
+		this.power = read.f();
+	},
+	write(write) {
+		this.super$write(write);
+		write.f(this.power);
 	},
 
 	getPower() {return this._power},
@@ -118,6 +132,15 @@ function newAbility(name, def) {
 
 newAbility("jump-drive", {
 	update(unit) {
+		// Legacy saves
+		if (unit.classId() != mess.classId) {
+			const newu = mess.create(unit.team);
+			newu.set(unit);
+			newu.add();
+			unit.kill(); unit.remove();
+			return;
+		}
+
 		if (unit.isPlayer() ? unit.controller.boosting : unit.controller.boost) {
 			unit.power = Mathf.lerp(unit.power, 1, 0.02);
 			if (Vars.ui && Mathf.chance(unit.power / 15)) {
@@ -153,5 +176,19 @@ newAbility("sparking", {
 		Draw.color();
 	}
 });
+
+// Make it work for saves
+EntityMapping.nameMap.put("anuke-logic-messenger", mess.constructor);
+for (var i in EntityMapping.idMap) {
+	if (!EntityMapping.idMap[i]) {
+		EntityMapping.idMap[i] = mess.constructor;
+		mess.classId = i;
+		break;
+	}
+}
+
+if (mess.classId == -1) {
+	throw "Messenger has no class ID";
+}
 
 module.exports = mess;
