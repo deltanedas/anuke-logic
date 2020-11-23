@@ -6,8 +6,8 @@ const add = (type, names) => {
 			anuke[name] = require("anuke-logic/" + type + "/" + name);
 		} catch (e) {
 			Log.err("Failed to load anuke-logic script @/@.js: @ (@#@)",
-				type, name,
-				e, e.fileName, new java.lang.Integer(e.lineNumber));
+				type, name, e, e.fileName,
+				new java.lang.Integer(e.lineNumber));
 			anuke[name] = null;
 		}
 	}

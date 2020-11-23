@@ -149,7 +149,7 @@ const StringStatement = {
 					this.setter(table, t, op, hide);
 				}
 			});
-		}).width(100).color(table.color).get();
+		}).width(500).color(table.color).get();
 
 		if (!ops[this.op]) return;
 
