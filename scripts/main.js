@@ -15,10 +15,11 @@ const add = (type, names) => {
 
 
 /* Instructions */
-add("inst", ["string", "drawx", "reflect", "unbind"]);
+add("inst", ["string", "drawx", "reflect", "unbind", "sound"]);
 
 /* Blocks */
-add("blocks", ["7seg-display", "char-display", "keyboard", "unit-detector"]);
+add("blocks", ["7seg-display", "char-display", "keyboard",
+	"unit-detector", "speaker", "subwoofer"]);
 
 /* Units */
 add("units", ["messenger"]);

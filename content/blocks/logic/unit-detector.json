@@ -1,7 +1,7 @@
 {
 	"size": 3,
 	"category": "logic",
-	"research": "illuminator",
+	"research": "micro-processor",
 	"requirements": [
 		"silicon/120",
 		"lead/80",

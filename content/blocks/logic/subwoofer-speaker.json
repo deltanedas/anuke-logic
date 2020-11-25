@@ -1,0 +1,14 @@
+{
+	"category": "logic",
+	"research": "speaker",
+	"requirements": [
+		"plastanium/30",
+		"silicon/80",
+		"graphite/120",
+		"titanium/150",
+	],
+
+	"size": 3,
+	"solid": true,
+	"destructible": true
+}

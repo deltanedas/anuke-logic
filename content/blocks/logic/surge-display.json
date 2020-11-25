@@ -1,6 +1,7 @@
 {
 	"type": "LogicDisplay",
 	"category": "logic",
+	"research": "large-logic-display",
 	"requirements": [
 		"silicon/300",
 		"titanium/200",

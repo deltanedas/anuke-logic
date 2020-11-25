@@ -135,12 +135,11 @@ const StringStatement = {
 			this.field(table, this[name], res => {this[name] = res});
 		};
 
-		table.add("set ");
+		table.add("set ").left().marginLeft(10);
 		add("result");
-		table.add(" to ");
-		this.row(table);
-
+		table.add(" to ").left().marginLeft(10);
 		add("string");
+		this.row(table);
 
 		/* dropdown for op */
 		var opb = table.button(this.op, Styles.logict, () => {
@@ -149,7 +148,7 @@ const StringStatement = {
 					this.setter(table, t, op, hide);
 				}
 			});
-		}).width(500).color(table.color).get();
+		}).width(50).color(table.color).get();
 
 		if (!ops[this.op]) return;
 
@@ -161,9 +160,13 @@ const StringStatement = {
 				this.args[i] = argnames[i];
 			}
 
-			this.field(table, this.args[i], arg => {this.args[idx] = arg});
+			var field = this.field(table, this.args[i], arg => {this.args[idx] = arg});
 
-			if ((i % 2) == 1) this.row(table);
+			if (i == 3) {
+				this.row(table);
+			} else if (i == 1 && argnames.length > 1) {
+				field.colspan(2);
+			}
 		}
 	},
 

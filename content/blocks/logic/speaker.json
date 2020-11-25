@@ -1,0 +1,12 @@
+{
+	"category": "logic",
+	"research": "logic-display",
+	"requirements": [
+		"silicon/30",
+		"graphite/20",
+		"titanium/15",
+	],
+
+	"solid": true,
+	"destructible": true
+}

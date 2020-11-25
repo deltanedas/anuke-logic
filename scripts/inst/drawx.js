@@ -55,19 +55,19 @@ const DrawxStatement = {
 
 	buildt(table) {
 		const add = name => {
-			table.add(name + " ");
-			this.field(table, this[name], text => {this[name] = text});
+			table.add(name).left().marginLeft(10);
+			this.field(table, this[name], text => {this[name] = text}).width(150);
 		};
 
 		add("display");
-
 		var toggle;
+
 		toggle = table.button(this.char ? "char" : "num", Styles.logict, () => {
 			this.char = !this.char;
 			toggle.getLabel().text = this.char ? "char" : "num";
-		}).padLeft(20).padRight(20).width(50).color(table.color).get();
-
+		}).padLeft(10).padRight(10).width(50).left().color(table.color).get();
 		this.row(table);
+
 		add("value");
 	},
 
