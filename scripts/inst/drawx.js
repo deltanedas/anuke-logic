@@ -81,7 +81,7 @@ const DrawxStatement = {
 	},
 
 	name: () => "DrawX",
-	color: () => Pal.logicOperations
+	color: () => Pal.logicBlocks
 };
 
 /* Mimic @RegisterStatement */

@@ -98,7 +98,7 @@ const ReflectStatement = {
 	},
 
 	name: () => "Reflect",
-	color: () => Pal.logicIo
+	color: () => Pal.logicOperations
 };
 
 /* Mimic @RegisterStatement */
