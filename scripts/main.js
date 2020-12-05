@@ -23,3 +23,6 @@ add("blocks", ["7seg-display", "char-display", "keyboard",
 
 /* Units */
 add("units", ["messenger"]);
+
+/* Misc */
+add("misc", ["manual"]);

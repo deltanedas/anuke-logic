@@ -15,7 +15,7 @@ const RotateI = {
 
 	run(vm) {
 		const block = vm.building(this.block);
-		if (!block) return;
+		if (!block || block.team != vm.team || !vm.linkIds.contains(block.id)) return;
 
 		this[this.relative ? "setRel" : "setAbs"](block, vm.num(this.value));
 	},

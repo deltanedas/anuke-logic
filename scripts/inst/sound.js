@@ -19,6 +19,7 @@ const SoundI = {
 
 		const speaker = vm.building(this.block);
 		if (!speaker || !speaker.getSound) return;
+		if (speaker.team != vm.team || !vm.linkIds.contains(speaker.id)) return;
 
 		const sound = speaker.getSound(vm.obj(this.sound));
 		if (!sound) return;

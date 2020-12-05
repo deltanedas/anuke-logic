@@ -1,0 +1,119 @@
+## Anuke Logic
+The premise of this mod is that Anuke would never add anything from it.
+
+## Blocks
+
+# Surge Display
+~{anuke-logic-surge-display:128}
+A display that can perfectly fit Anuke in all his glory.
+
+# 7-Segment Display
+~{anuke-logic-7seg-display:128}
+Use the [royal]drawx[] instruction to configure it.
+Has 7 bits which correspond to LTR, Little-Endian lights:
+    0
+ 1     2
+    3
+ 4     5
+    6
+
+#Char Display
+~{anuke-logic-char-display:128}
+Like a 7-seg display except displaying any character in the audiowide font.
+When using [royal]drawx[] [violet]num[], it takes the unicode value of a character.
+0x20 (" ") is an empty space.
+
+# Keyboard
+~{anuke-logic-keyboard:128}
+Logic-readable version of the message block.
+Cannot be written to in order to avoid string-based memory cells.
+
+# Unit Detector
+~{anuke-logic-unit-detector:128}
+Used for detecting units in specific areas, configurable by hand.
+Use the regular [royal]radar[] instruction.
+
+# Speaker
+~{anuke-logic-speaker:128}
+Can play any sound in vanilla mindustry.
+Takes its sound from [royal]sound[] as a string.
+Limited to playing 2 sounds every second.
+
+# Subwoofer
+~{anuke-logic-subwoofer-speaker:128}
+Like a Speaker, but can play about 7 sounds per second and supports pitch.
+[stat]Please don't use it to annoy everyone.[]
+
+# Instructions
+
+[royal]unbind[]
+	Immediately unbinds the bound unit, setting [coral]@unit[] to null and restoring its AI.
+	Processors implicitly do this when you don't control a unit for a few seconds, this instruction allows full control over it.
+
+[royal]reflect[]
+	Manipulates variables using their names stored inside strings.
+	Enables pointers in higher level languages.
+	Requires a T3+ (hyper+) processor.
+	[red]Will not create new variables[], cell-less memory requires 'set arr_n 0' for n = 0 -> capacity
+
+	[violet]get[] [stat]String[] string, [coral]value[]
+		Puts the variable inside [stat]string[]'s variable into [coral]value[].
+		These are equivalent:
+			[royal]reflect[] [violet]get[] [stat]"a"[] [coral]b[]
+			[royal]set[] [coral]b[] [stat]a[]
+
+	[violet]set[] [stat]String[] string, [stat]value[]
+		Puts the variable inside [stat]value[] into [coral]string[]'s variable.
+		These are equivalent:
+			[royal]reflect[] [violet]set[] [stat]"a"[] [coral]b[]
+			[royal]set[] [coral]a[] [stat]b[]
+
+[royal]string[] [coral]String[] result, [coral
+	String manipulation.
+	Does something to [stat]str[] and puts the result in [coral]result[].
+	[stat]Maximum length of a produced string is $(this.global.anukeLogic.string.maxLength)[]
+
+	[violet]len[]
+		Sets [coral]result[] to the length of [stat]str[].
+		(Here [stat]result[] is an [stat]int[].)
+
+	[violet]char[] [stat]int[] index
+		Sets [coral]result[] to the unicode value of a character [stat]str[][[[stat]index[]].
+		Index is 0-based like links.
+
+	[violet]add[] [stat]String[] other
+		Sets [coral]result[] to the concatenation of [stat]str[] and [stat]other[].
+
+	[violet]sub[] [stat]int[] start, end
+		Sets [coral]result[] to a substring of [stat]str[].
+		Negative numbers wrap around the end.
+		Example: sub of "frogs" from 2, 3 results in "og"
+
+	[violet]push[] [stat]int[] char
+		Sets [coral]result[] to [stat]str[] with the unicode character [stat]char[] appended.
+		The equivalent of [green]Character(0x30)[] is [royal]string[] [violet]push[] [coral]char[] [stat]"" 0x30[]
+
+[royal]drawx[]
+	Special draw instruction for char and 7-segment displays.
+	Used to set the character or lines displayed.
+
+	[violet]num[] [stat]int[] bits
+		Directly sets:
+		- For a character display, the unicode character.
+		- For a 7-segment display, the segment bits.
+
+	[violet]char[] [stat]String[] char
+		Sets the displayed character:
+		- For a character display, to the first character in the the string
+		- For a 7-segment display, to an approximation, if any, for a character [[0-9a-Z].
+		[red]Requires a T2+ processor.[]
+
+[royal]sound[] [stat]Building[] speaker, [stat]String[] sound, [stat]double[] pitch
+	Makes the speaker play a sound.
+	Pitch is only used by Subwoofers, it is between 0 and 2.
+	Sounds are ratelimited according to the speaker tier.
+
+[royal]rotate[] [stat]Building[] block, [violet]to/by[], [stat]int[] value
+	Either sets [stat]block[]'s rotation ([violet]to[]) or adds to it.
+	Rotation wraps around, you can safely set it to -3968395.
+	Blocks like routers can be "rotated" to set item output direction.

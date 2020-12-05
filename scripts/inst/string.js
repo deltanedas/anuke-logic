@@ -193,7 +193,8 @@ const StringStatement = {
 	},
 
 	name: () => "String",
-	color: () => Pal.logicOperations
+	color: () => Pal.logicOperations,
+	maxLength: maxLength
 };
 
 /* Mimic @RegisterStatement */

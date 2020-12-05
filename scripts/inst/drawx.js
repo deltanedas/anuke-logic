@@ -16,9 +16,10 @@ const DrawxI = {
 			return;
 		}
 
-		const display = vm.obj(this.display);
+		const display = vm.building(this.display);
 		// Basically an interface
 		if (!display || typeof(display.drawx) != "function") return;
+		if (display.team != vm.team || !vm.linkIds.contains(display.id)) return;
 
 		const value = vm[this.char ? "obj" : "num"](this.value);
 		if (this.char) {
