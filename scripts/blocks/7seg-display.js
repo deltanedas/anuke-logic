@@ -43,7 +43,7 @@ const getbits = c => {
 
 const mask = 0b1111111;
 
-const disp = extendContent(Block, "7seg-display", {
+const disp = extend(Block, "7seg-display", {
 	load() {
 		this.super$load();
 		this.segments = [];

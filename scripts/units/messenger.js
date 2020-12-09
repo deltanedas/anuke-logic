@@ -1,6 +1,6 @@
 /* Old v5 javelin repurposed as a logic-only unit. */
 
-const mess = extendContent(UnitType, "messenger", {
+const mess = extend(UnitType, "messenger", {
 	load() {
 		this.super$load();
 		this.shieldRegion = Core.atlas.find(this.name + "-shield");

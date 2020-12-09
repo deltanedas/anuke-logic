@@ -1,4 +1,4 @@
-const disp = extendContent(Block, "char-display", {
+const disp = extend(Block, "char-display", {
 	invisible: c => c == ' ' || c == '\n' || c == '\r'
 });
 

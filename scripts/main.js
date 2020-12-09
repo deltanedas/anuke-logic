@@ -1,4 +1,4 @@
-const anuke = this.global.anukeLogic = {};
+const anuke = global.anukeLogic = {};
 const add = (type, names) => {
 	for (var i in names) {
 		var name = names[i];

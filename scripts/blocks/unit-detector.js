@@ -1,4 +1,4 @@
-const det = extendContent(Block, "unit-detector", {
+const det = extend(Block, "unit-detector", {
 	setStats() {
 		this.super$setStats();
 		this.stats.add(Stat.range, this.max, StatUnit.blocks);
