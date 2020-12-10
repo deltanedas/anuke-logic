@@ -8,7 +8,12 @@ if (!Vars.headless) {
 
 	speaker.buildType = () => extend(Building, {
 		getSound(name) {
-			return Sounds[name] instanceof Sound ? Sounds[name] : null;
+			try {
+				return Sounds[name] instanceof Sound ? Sounds[name] : null;
+			} catch (e) {
+				// Sound doesnt exist as a field or function
+				return null;
+			}
 		},
 
 		playSound(sound, pitch) {
