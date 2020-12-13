@@ -85,14 +85,11 @@ const DrawxStatement = {
 	color: () => Pal.logicBlocks
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("drawx", func(DrawxStatement.new));
-
-LogicIO.allStatements.add(prov(() => DrawxStatement.new([
+global.anuke.register("drawx", DrawxStatement, [
 	"drawx",
 	"char",
 	"display1",
 	'"h"'
-])));
+]);
 
 module.exports = DrawxStatement;

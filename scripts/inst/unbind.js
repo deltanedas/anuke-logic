@@ -32,9 +32,6 @@ const UnbindStatement = {
 	color: () => Pal.logicUnits
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("unbind", func(UnbindStatement.new));
-
-LogicIO.allStatements.add(prov(UnbindStatement.new));
+global.anuke.register("unbind", UnbindStatement);
 
 module.exports = UnbindStatement;

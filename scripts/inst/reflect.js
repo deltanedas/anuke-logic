@@ -1,5 +1,4 @@
 // "reflect" instruction provides the means to get/set variables from a string
-// Completely removes the need for memory; requires T3+ processor.
 
 // reflect get var "myvar" == set var myvar
 // reflect set "myvar" var == set myvar var
@@ -10,15 +9,9 @@ const ReflectI = {
 		this.set = set;
 		this.string = builder.var(string);
 		this.value = builder.var(value);
-		this.proc = builder.var("@this");
 	},
 
 	run(vm) {
-		// Require T3+ processor
-		if (vm.building(this.proc).block.instructionsPerTick < Blocks.hyperProcessor.instructionsPerTick) {
-			return;
-		}
-
 		const string = vm.obj(this.string);
 		if (typeof(string) != "string") return;
 
@@ -101,14 +94,11 @@ const ReflectStatement = {
 	color: () => Pal.logicOperations
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("reflect", func(ReflectStatement.new));
-
-LogicIO.allStatements.add(prov(() => ReflectStatement.new([
+global.anuke.register("reflect", ReflectStatement, [
 	"reflect",
 	"get",
 	'"var_name"',
 	"value"
-])));
+]);
 
 module.exports = ReflectStatement;

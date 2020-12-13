@@ -53,7 +53,6 @@ Like a Speaker, but can play about 7 sounds per second and supports pitch.
 [royal]reflect[]
 	Manipulates variables using their names stored inside strings.
 	Enables pointers in higher level languages.
-	Requires a T3+ (hyper+) processor.
 	[red]Will not create new variables[], cell-less memory requires 'set arr_n 0' for n = 0 -> capacity
 
 	[violet]get[] [stat]String[] string, [coral]value[]
@@ -68,10 +67,31 @@ Like a Speaker, but can play about 7 sounds per second and supports pitch.
 			[royal]reflect[] [violet]set[] [stat]"a"[] [coral]b[]
 			[royal]set[] [coral]a[] [stat]b[]
 
-[royal]string[] [coral]String[] result, [coral
+[royal]proc[] [stat]LogicBuild[] processor
+	Manipulates a processor, which includes [stat]@this[].
+
+	[violet]set[] [stat]String[] code
+		Compiles new code for a processor from a string.
+
+	[violet]get[] [coral]String[] code
+		Sets [coral]code[] to the source code of a processor.
+
+	[violet]add[] [coral]String[] line
+		Adds [stat]line[] to the processor's code and recompiles.
+		Use this for programs that can't be created with just 256 characters.
+
+	[violet]linked[] [stat]Building[] link, [coral]boolean[] linked
+		Sets [coral]linked[] to whether a block is linked to a processor or not.
+
+	[violet]link[] [stat]Building[] link
+		Adds or removes a block from the processor's links.
+		Increments/decrements [coral]@links[] and sets the appropriate variable, if it exists.
+		This contrasts manually linking a block which will recompile the processor's code.
+
+[royal]string[] [coral]String[] result, [stat]String[] str
 	String manipulation.
 	Does something to [stat]str[] and puts the result in [coral]result[].
-	[stat]Maximum length of a produced string is $(this.global.anukeLogic.string.maxLength)[]
+	[stat]Maximum length of a produced string is $(global.anuke.string.maxLength)[]
 
 	[violet]len[]
 		Sets [coral]result[] to the length of [stat]str[].
@@ -92,6 +112,7 @@ Like a Speaker, but can play about 7 sounds per second and supports pitch.
 	[violet]push[] [stat]int[] char
 		Sets [coral]result[] to [stat]str[] with the unicode character [stat]char[] appended.
 		The equivalent of [green]Character(0x30)[] is [royal]string[] [violet]push[] [coral]char[] [stat]"" 0x30[]
+		TO remove a character, push 0x7F (DEL)
 
 [royal]drawx[]
 	Special draw instruction for char and 7-segment displays.

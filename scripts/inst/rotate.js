@@ -86,14 +86,11 @@ const RotateStatement = {
 	color: () => Pal.logicBlocks
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("rotate", func(RotateStatement.new));
-
-LogicIO.allStatements.add(prov(() => RotateStatement.new([
+global.anuke.register("rotate", RotateStatement, [
 	"rotate",
 	"block1",
 	"by",
 	"1"
-])));
+]);
 
 module.exports = RotateStatement;

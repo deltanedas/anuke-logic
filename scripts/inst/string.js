@@ -110,9 +110,9 @@ const StringStatement = {
 	},
 
 	read(words) {
-		this.op = words[1];
-		this.result = words[2];
-		this.string = words[3];
+		this.op = words[1] || "add";
+		this.result = words[2] || "result";
+		this.string = words[3] || '"frog"';
 
 		this.args = [];
 		for (var i = 4; i < 6; i++) {
@@ -162,10 +162,12 @@ const StringStatement = {
 
 			var field = this.field(table, this.args[i], arg => {this.args[idx] = arg});
 
-			if (i == 3) {
-				this.row(table);
-			} else if (i == 1 && argnames.length > 1) {
-				field.colspan(2);
+			if (Vars.mobile) {
+				if (i == 3) {
+					this.row(table);
+				} else if (i == 1 && argnames.length > 1) {
+					field.colspan(2);
+				}
 			}
 		}
 	},
@@ -197,15 +199,12 @@ const StringStatement = {
 	maxLength: maxLength
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("string", func(StringStatement.new));
-
-LogicIO.allStatements.add(prov(() => StringStatement.new([
+global.anuke.register("string", StringStatement, [
 	"string",
 	"add",
 	"result",
 	'"frog"',
 	'" cat"'
-])));
+]);
 
 module.exports = StringStatement;

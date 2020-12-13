@@ -1,4 +1,12 @@
-const anuke = global.anukeLogic = {};
+const anuke = global.anuke = {
+	/* Mimic @RegisterStatement */
+	register(name, statement, def) {
+		LAssembler.customParsers.put(name, func(statement.new));
+
+		LogicIO.allStatements.add(prov(() => statement.new(def)));
+	}
+};
+
 const add = (type, names) => {
 	for (var i in names) {
 		var name = names[i];
@@ -15,7 +23,7 @@ const add = (type, names) => {
 
 
 /* Instructions */
-add("inst", ["unbind", "string", "reflect", "drawx", "sound", "rotate"]);
+add("inst", ["unbind", "string", "reflect", "proc", "drawx", "sound", "rotate"]);
 
 /* Blocks */
 add("blocks", ["7seg-display", "char-display", "keyboard",

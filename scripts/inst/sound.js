@@ -117,13 +117,10 @@ const SoundStatement = {
 	color: () => Pal.logicBlocks
 };
 
-/* Mimic @RegisterStatement */
-LAssembler.customParsers.put("sound", func(SoundStatement.new));
-
-LogicIO.allStatements.add(prov(() => SoundStatement.new([
+global.anuke.register("sound", SoundStatement, [
 	"sound",
 	"speaker1",
 	'"pew"'
-])));
+]);
 
 module.exports = SoundStatement;
