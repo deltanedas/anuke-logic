@@ -16,11 +16,13 @@ if (!Vars.headless) {
 			}
 		},
 
-		playSound(sound, pitch) {
+		playSound(sound, pitch, speaker) {
 			// anti-spam
 			if ((Time.millis() - this.played) < woof.speed) return;
 
-			sound.at(this, Mathf.clamp(pitch, 0, 2));
+			pitch = Mathf.clamp(pitch, 0, 2);
+			volume = Mathf.clamp(volume, 0, 2);
+			sound.at(this.x, this.y, pitch, volume);
 			this.played = Time.millis();
 		},
 

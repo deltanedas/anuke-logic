@@ -4,7 +4,7 @@
 
 /* Speaker interface: {
 	Sound getSound(String name);
-	void playSound(Sound sound, float pitch);
+	void playSound(Sound sound, float pitch, volume);
 } */
 
 const SoundI = {
@@ -25,20 +25,8 @@ const SoundI = {
 		if (!sound) return;
 
 		const pitch = vm.num(this.pitch);
-		speaker.playSound(sound, pitch);
-	},
-
-	getIndex(vm, str) {
-		// see LAssembler#var
-		str = str.replace(/ /g, "_");
-
-		const vars = this.builder.vars;
-		if (vars.containsKey(str)) {
-			return vars.get(str).id;
-		}
-
-		// Don't add new variables, require declaring them first
-		return -1;
+		const volume = vm.num(this.volume);
+		speaker.playSound(sound, pitch, volume);
 	}
 };
 
@@ -53,6 +41,7 @@ const SoundStatement = {
 		this.speaker = words[1] || "speaker1";
 		this.sound = words[2] || '"pew"';
 		this.pitch = words[3] || "1";
+		this.volume = words[4] || "1";
 	},
 
 	build(h) {
@@ -61,7 +50,7 @@ const SoundStatement = {
 		}
 
 		const inst = extend(LExecutor.LInstruction, Object.create(SoundI));
-		inst._(h, this.speaker, this.sound, this.pitch);
+		inst._(h, this.speaker, this.sound, this.pitch, this.volume);
 		return inst;
 	},
 
@@ -102,6 +91,7 @@ const SoundStatement = {
 
 		this.row(table);
 		add("pitch");
+		add("volume");
 	},
 
 	write(b) {
@@ -111,6 +101,8 @@ const SoundStatement = {
 		b.append(this.sound);
 		b.append(" ");
 		b.append(this.pitch);
+		b.append(" ");
+		b.append(this.volume);
 	},
 
 	name: () => "Sound",

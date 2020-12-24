@@ -41,7 +41,8 @@ Limited to playing 2 sounds every second.
 
 # Subwoofer
 ~{anuke-logic-subwoofer-speaker:128}
-Like a Speaker, but can play about 7 sounds per second and supports pitch.
+Like a Speaker, but can play about 7 sounds per second and supports pitch, volume.
+Both pitch and volume are clamped between 0 and 2, inclusive.
 [stat]Please don't use it to annoy everyone.[]
 
 # Instructions
@@ -129,9 +130,9 @@ Like a Speaker, but can play about 7 sounds per second and supports pitch.
 		- For a 7-segment display, to an approximation, if any, for a character [[0-9a-Z].
 		[red]Requires a T2+ processor.[]
 
-[royal]sound[] [stat]Building[] speaker, [stat]String[] sound, [stat]double[] pitch
+[royal]sound[] [stat]Building[] speaker, [stat]String[] sound, [stat]double[] pitch, volume
 	Makes the speaker play a sound.
-	Pitch is only used by Subwoofers, it is between 0 and 2.
+	Pitch and volume are only used by Subwoofers, it is clamped between 0 and 2.
 	Sounds are ratelimited according to the speaker tier.
 
 [royal]rotate[] [stat]Building[] block, [violet]to/by[], [stat]int[] value
