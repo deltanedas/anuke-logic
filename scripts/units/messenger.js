@@ -86,7 +86,10 @@ mess.constructor = () => extend(UnitEntity, {
 	},
 
 	speed() {
-		return this.power > 0.03 ? (this.power < 0.95 ? 0.5 + this.power : (this.power + 1) * 15) : mess.speed;
+		if (this.isBoosting() {
+			return this.power > 0.03 ? (this.power < 0.95 ? 0.5 + this.power : (this.power + 1) * 15) : mess.speed;
+		}
+		return this.super$speed();
 	},
 
 	damage(amount, withEffect) {
@@ -108,7 +111,11 @@ mess.constructor = () => extend(UnitEntity, {
 	mass: () => 502,
 
 	warp() {
-		return Mathf.clamp(this.vel.len(), 1, (this.power + 1) * 5);
+		return this.isBoosting() ? Mathf.clamp(this.vel.len(), 1, (this.power + 1) * 5) : 1;
+	},
+	isBoosting() {
+		const ctrl = this.controller;
+		return this.isPlayer() ? ctrl.boosting : ctrl.boost;
 	},
 
 	read(read) {
@@ -141,7 +148,7 @@ newAbility("jump-drive", {
 			return;
 		}
 
-		if (unit.isPlayer() ? unit.controller.boosting : unit.controller.boost) {
+		if (unit.isBoosting()) {
 			unit.power = Mathf.lerp(unit.power, 1, 0.02);
 			if (Vars.ui && Mathf.chance(unit.power / 15)) {
 				Fx.lancerLaserCharge.at(unit);
@@ -149,7 +156,7 @@ newAbility("jump-drive", {
 		} else {
 			// Cut the engines immediately
 			if (unit.power > 0.95) unit.power = 0.95;
-			unit.power = Mathf.lerp(unit.power, 0, unit.power * 0.05);
+			unit.power = Mathf.lerp(unit.power, 0, 0.05);
 		}
 	}
 });
