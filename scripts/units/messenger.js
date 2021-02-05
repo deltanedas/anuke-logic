@@ -24,7 +24,7 @@ const mess = extend(UnitType, "messenger", {
 		unit.elevation = elevation;
 
 		Draw.z(Math.min(z - 0.02, Layer.bullet - 1));
-		this.drawOcclusion(unit);
+		this.drawSoftShadow(unit);
 
 		Draw.z(z - UnitType.outlineSpace);
 		Draw.rect(this.outlineRegion, unit.x, unit.y, unit.rotation - 90);
