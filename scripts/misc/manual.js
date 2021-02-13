@@ -7,7 +7,7 @@ try {
 	Events.on(ClientLoadEvent, () => {
 		const icon = new TextureRegionDrawable(Core.atlas.find("god"));
 		Vars.ui.logic.buttons.button(icon, () => {
-			rtfm.showPage("$logic/$anuke-logic");
+			rtfm.showPage("$logic/$anuke-logic", true);
 		}).size(64);
 	});
 	module.exports = true;

@@ -57,7 +57,14 @@ const mess = extend(UnitType, "messenger", {
 	// Create super$ funcs that can be used, on its own theyre booleans
 	drawCell() {}, drawItems() {},
 
-	classId: -1
+	classId: -1,
+	speed: 1.87,
+	drag: 0.01,
+	health: 170,
+	flying: true,
+	canBoost: true,
+	itemCapacity: 200,
+	rotateSpeed: 0.1
 });
 
 Blocks.airFactory.plans.add(new UnitFactory.UnitPlan(mess, 25 * 60,
@@ -67,13 +74,6 @@ Blocks.airFactory.plans.add(new UnitFactory.UnitPlan(mess, 25 * 60,
 mess.defaultController = () => extend(AIController, {
 	updateUnit() {}
 });
-mess.speed = 1.87;
-mess.drag = 0.01;
-mess.health = 170;
-mess.flying = true;
-mess.canBoost = true;
-mess.health = 170;
-mess.itemCapacity = 200;
 
 mess.constructor = () => extend(UnitEntity, {
 	isGrounded() {
@@ -86,7 +86,7 @@ mess.constructor = () => extend(UnitEntity, {
 	},
 
 	speed() {
-		if (this.isBoosting() {
+		if (this.isBoosting()) {
 			return this.power > 0.03 ? (this.power < 0.95 ? 0.5 + this.power : (this.power + 1) * 15) : mess.speed;
 		}
 		return this.super$speed();
