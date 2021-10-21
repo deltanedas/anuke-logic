@@ -66,7 +66,7 @@ const DrawxStatement = {
 		toggle = table.button(this.char ? "char" : "num", Styles.logict, () => {
 			this.char = !this.char;
 			toggle.getLabel().text = this.char ? "char" : "num";
-		}).padLeft(10).padRight(10).width(60).left().color(table.color).get();
+		}).padLeft(10).padRight(10).width(80).left().color(table.color).get();
 		this.row(table);
 
 		add("value");

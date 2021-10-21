@@ -4,6 +4,6 @@
 	"author": "DeltaNedas",
 	"description": "Adds random logic utilities. Praise the cat.",
 	"repo": "DeltaNedas/anuke-logic",
-	"version": "1.9.3",
-	"minGameVersion": 122
+	"version": "1.9.4",
+	"minGameVersion": 131
 }
