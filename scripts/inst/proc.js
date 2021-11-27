@@ -77,7 +77,10 @@ const ops = {
 					existing.name = proc.findLinkName(args.link.block);
 				}
 
-				proc.exec.vars[inst.linksidx].numval--;
+				// don't know why this check is needed but it is
+				if (proc.exec) {
+					proc.exec.vars[inst.linksidx].numval--;
+				}
 			} else {
 				// Processors with no code have no executor
 				if (proc.exec) {
