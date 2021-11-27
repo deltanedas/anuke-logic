@@ -28,13 +28,12 @@ const ops = {
 		}
 	},
 
-	// proc.updateCode(proc.code + "\n" + line)
-	add: {
+	addline: {
 		args: {line: "obj"},
 
 		run(proc, args) {
-			if (typeof(args.line != "string")) return;
-			proc.updateCode(args.code + "\n" + args.line);
+			if (typeof(args.line) != "string") return;
+			proc.updateCode(proc.code + "\n" + args.line);
 		}
 	},
 
