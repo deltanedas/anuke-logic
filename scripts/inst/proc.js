@@ -28,7 +28,7 @@ const ops = {
 		}
 	},
 
-	addline: {
+	add: {
 		args: {line: "obj"},
 
 		run(proc, args) {
