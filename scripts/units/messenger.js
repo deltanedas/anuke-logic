@@ -26,7 +26,7 @@ const mess = extend(UnitType, "messenger", {
 		Draw.z(Math.min(z - 0.02, Layer.bullet - 1));
 		this.drawSoftShadow(unit);
 
-		Draw.z(z - UnitType.outlineSpace);
+		Draw.z(z - 0.01f);
 		Draw.rect(this.outlineRegion, unit.x, unit.y, unit.rotation - 90);
 
 		Draw.z(z);
