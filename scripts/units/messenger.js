@@ -26,10 +26,9 @@ const mess = extend(UnitType, "messenger", {
 		Draw.z(Math.min(z - 0.02, Layer.bullet - 1));
 		this.drawSoftShadow(unit);
 
-		Draw.z(z - UnitType.outlineSpace);
+		Draw.z(z);
 		Draw.rect(this.outlineRegion, unit.x, unit.y, unit.rotation - 90);
 
-		Draw.z(z);
 		Draw.yscl = unit.warp();
 		Draw.xscl = 1 / Math.sqrt(Draw.yscl);
 		this.drawEngine(unit);
